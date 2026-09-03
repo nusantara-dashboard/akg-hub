@@ -1,0 +1,17 @@
+{
+  "short_name": "AKG Hub",
+  "name": "AKG HUB PORTAL - Sistem Operasional Terintegrasi",
+  "icons": [
+    {
+      "src": "https://github.com/nusantara-dashboard/akg-hub/blob/main/logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "index.html",
+  "background_color": "#2FA4E7",
+  "theme_color": "#0A2540",
+  "display": "standalone",
+  "orientation": "portrait"
+}
