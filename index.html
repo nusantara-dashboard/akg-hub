@@ -57,7 +57,8 @@ async function api(endpoint,method="GET",payload={}){
   const body={...payload,endpoint,token:state.token};
   const opt={method,headers:{"Content-Type":"application/json"}};
   if(method!=="GET") opt.body=JSON.stringify(body);
-  else {const q=new URLSearchParams(body); return fetch(APP_CONFIG.API_URL+"?"+q).then(r=>r.json());}
+  else {const q=new URLSearchParams(body); return fetch(APP_CONFIG.API_URL + "?" + q)
+  .then(t => t.json());}
   const r=await fetch(APP_CONFIG.API_URL,opt); return r.json();
 }
 
