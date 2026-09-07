@@ -193,8 +193,29 @@ async function submitDynamicForm(formId){
 $("mobileBtn").onclick=()=>document.querySelector("aside").style.display=document.querySelector("aside").style.display==="block"?"none":"block";
 
 (function restore(){
-  const t=sessionStorage.getItem("V52_TOKEN"),u=sessionStorage.getItem("V52_USER");
-  if(t&&u){state.token=t;state.user=JSON.parse(u);boot();}
+  const t = sessionStorage.getItem("V52_TOKEN");
+  const u = sessionStorage.getItem("V52_USER");
+
+  if(!t || !u) return;
+
+  try{
+    const user = JSON.parse(u);
+
+    if(!user || typeof user !== "object"){
+      sessionStorage.removeItem("V52_TOKEN");
+      sessionStorage.removeItem("V52_USER");
+      return;
+    }
+
+    state.token = t;
+    state.user = user;
+    boot();
+
+  }catch(err){
+    console.warn("Session V5.2 tidak valid, session dibersihkan.", err);
+    sessionStorage.removeItem("V52_TOKEN");
+    sessionStorage.removeItem("V52_USER");
+  }
 })();
 </script>
 </body>
